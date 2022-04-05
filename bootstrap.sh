@@ -50,24 +50,24 @@ apt-get update -y
 apt-get install -y dotnet-sdk-3.1
 
 # VS Code setup - https://code.visualstudio.com/docs/setup/linux
-sudo snap install --classic code
+# sudo snap install --classic code
 
 # Node setup - https://github.com/nodesource/distributions/blob/master/README.md
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-apt-get install -y nodejs
+# curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+# apt-get install -y nodejs
 
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-apt-get install -y nodejs
+# curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+# apt-get install -y nodejs
 
 # build tools
 apt-get install -y gcc g++ make
 
 # Yarn setup - https://yarnpkg.com/lang/en/docs/install/#debian-stable
-curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+# curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+# echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
 apt-get update -y
-apt install yarn -y
+# apt install yarn -y
 
 # Python 3 (ignoring version 2)
 apt install -y python3 python3-pip
@@ -80,8 +80,8 @@ apt install -y build-essential libssl-dev libffi-dev python-dev
 VERSION=1.15
 OS=linux
 ARCH=amd64
-wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz -O /tmp/go$VERSION.$OS-$ARCH.tar.gz
-tar -C /usr/local -xzf /tmp/go$VERSION.$OS-$ARCH.tar.gz
+# wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz -O /tmp/go$VERSION.$OS-$ARCH.tar.gz
+# tar -C /usr/local -xzf /tmp/go$VERSION.$OS-$ARCH.tar.gz
 
 # Using "~" in sudo context will get "/root" so wild guess the profile path:
 USERS_PROFILE_FILENAME=/home/${SUDO_USER}/.profile
@@ -94,7 +94,7 @@ export PATH=$PATH:/usr/local/go/bin
 ' >> $USERS_PROFILE_FILENAME
 fi
 
-# adds the cuurent user who is sudo'ing to a docker group:
+# adds the current user who is sudo'ing to a docker group:
 groupadd docker
 usermod -aG docker $SUDO_USER
 service docker restart
@@ -105,12 +105,6 @@ sudo apt autoremove -y
 cat << EOF
 
 # now....
-
-code --install-extension ms-dotnettools.csharp
-code --install-extension golang.go
-code --install-extension dbaeumer.vscode-eslint
-code --install-extension HookyQR.beautify
-code --list-extensions
 
 # git setup:
 
@@ -128,7 +122,5 @@ xclip -sel clip < ~/.ssh/id_rsa.pub
 # also check docker... you may need to login again for groups to sort out
 # try >> docker run hello-world
 
-# To use GO straight up, get the path:
-source ~/.profile
 
 EOF
